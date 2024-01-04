@@ -1,0 +1,226 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary-lightest: #7ececa;
+  --ifm-color-primary-lighter: #59c0bb;
+  --ifm-color-primary-light: #3fa6a1;
+  --ifm-color-primary: #48A8A5;
+  --ifm-color-primary-dark: #31817d;
+  --ifm-color-primary-darker: #235c5a;
+  --ifm-color-primary-darkest: #153736;
+
+  --ifm-navbar-background-color: #e1f4f3;
+  --ifm-background-color: #e1f4f3;
+  --ifm-footer-background-color: #e1f4f3;
+  --ifm-font-color-base: #0e2524;
+
+  --ifm-link-color:#48a8a5;
+
+  --ifm-footer-title-color: #7b7b60;
+
+
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --docusaurus-tag-list-border: var(--accent);
+
+  --text5: hsl(177, 45%, 10%, 5%);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+:root[data-theme='dark'] {
+  --ifm-color-primary-lightest: #90cfcd;
+  --ifm-color-primary-lighter: #73c3c1;
+  --ifm-color-primary-light: #6abfbc;
+  --ifm-color-primary: #57b7b4;
+  --ifm-color-primary-dark: #49aaa7;
+  --ifm-color-primary-darker: #45a19e;
+  --ifm-color-primary-darkest: #45a19e;
+
+  --ifm-navbar-background-color: #0B1E1D;
+  --ifm-background-color: #0B1E1D;
+  --ifm-footer-background-color: #0B1E1D;
+  --ifm-font-color-base: #DAF1F0;
+
+  --ifm-link-color:#57b7b4;
+
+  --ifm-footer-title-color: #9f9f84;
+
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --text5: hsl(177, 45%, 90%, 5%);
+
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer {
+  border-radius: 10px;
+  background-color: var(--text5);
+  margin: 0em 5em 3em 5em;
+  padding: 3em 5em;
+}
+
+header h2 a {
+
+  background: linear-gradient(120deg,var(--primary),var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.avatar__name a {
+  color: var(--secondary);
+}
+
+
+:root[data-theme="light"] {
+  --text: #0e2524;
+  --background: #e1f4f3;
+  --primary: #48a8a5;
+  --secondary: #8c87d4;
+  --accent: #7b7b60;
+}
+
+:root[data-theme="dark"] {
+  --text: #daf1f0;
+  --background: #0b1e1d;
+  --primary: #57b7b4;
+  --secondary: #595593;
+  --accent: #a0a085;
+}
+
+/*
+:root[data-theme="light"] {
+  --text-50: #edf8f7;
+  --text-100: #daf1f0;
+  --text-200: #b5e3e1;
+  --text-300: #90d5d1;
+  --text-400: #6bc7c2;
+  --text-500: #46b9b3;
+  --text-600: #38948f;
+  --text-700: #2a6f6b;
+  --text-800: #1c4a48;
+  --text-900: #0e2524;
+  --text-950: #071212;
+
+  --background-50: #ecf8f8;
+  --background-100: #daf1f0;
+  --background-200: #b5e3e1;
+  --background-300: #8fd6d2;
+  --background-400: #6ac8c3;
+  --background-500: #45bab4;
+  --background-600: #379590;
+  --background-700: #29706c;
+  --background-800: #1c4a48;
+  --background-900: #0e2524;
+  --background-950: #071312;
+
+  --primary-50: #edf7f7;
+  --primary-100: #dbf0ef;
+  --primary-200: #b8e0df;
+  --primary-300: #94d1cf;
+  --primary-400: #70c2bf;
+  --primary-500: #4db3af;
+  --primary-600: #3d8f8c;
+  --primary-700: #2e6b69;
+  --primary-800: #1f4746;
+  --primary-900: #0f2423;
+  --primary-950: #081212;
+
+  --secondary-50: #edecf8;
+  --secondary-100: #dbdaf1;
+  --secondary-200: #b7b4e4;
+  --secondary-300: #938fd6;
+  --secondary-400: #6f69c9;
+  --secondary-500: #4c44bb;
+  --secondary-600: #3c3696;
+  --secondary-700: #2d2970;
+  --secondary-800: #1e1b4b;
+  --secondary-900: #0f0e25;
+  --secondary-950: #080713;
+
+  --accent-50: #f4f4f1;
+  --accent-100: #e9e9e2;
+  --accent-200: #d2d2c6;
+  --accent-300: #bcbca9;
+  --accent-400: #a5a58d;
+  --accent-500: #8f8f70;
+  --accent-600: #72725a;
+  --accent-700: #565643;
+  --accent-800: #39392d;
+  --accent-900: #1d1d16;
+  --accent-950: #0e0e0b;
+
+}
+
+:root[data-theme="dark"] {
+  --text-50: #071212;
+  --text-100: #0e2524;
+  --text-200: #1c4a48;
+  --text-300: #2a6f6b;
+  --text-400: #38948f;
+  --text-500: #46b9b3;
+  --text-600: #6bc7c2;
+  --text-700: #90d5d1;
+  --text-800: #b5e3e1;
+  --text-900: #daf1f0;
+  --text-950: #edf8f7;
+
+  --background-50: #071312;
+  --background-100: #0e2524;
+  --background-200: #1c4a48;
+  --background-300: #29706c;
+  --background-400: #379590;
+  --background-500: #45bab4;
+  --background-600: #6ac8c3;
+  --background-700: #8fd6d2;
+  --background-800: #b5e3e1;
+  --background-900: #daf1f0;
+  --background-950: #ecf8f8;
+
+  --primary-50: #081212;
+  --primary-100: #0f2423;
+  --primary-200: #1f4746;
+  --primary-300: #2e6b69;
+  --primary-400: #3d8f8c;
+  --primary-500: #4db3af;
+  --primary-600: #70c2bf;
+  --primary-700: #94d1cf;
+  --primary-800: #b8e0df;
+  --primary-900: #dbf0ef;
+  --primary-950: #edf7f7;
+
+  --secondary-50: #080713;
+  --secondary-100: #0f0e25;
+  --secondary-200: #1e1b4b;
+  --secondary-300: #2d2970;
+  --secondary-400: #3c3696;
+  --secondary-500: #4c44bb;
+  --secondary-600: #6f69c9;
+  --secondary-700: #938fd6;
+  --secondary-800: #b7b4e4;
+  --secondary-900: #dbdaf1;
+  --secondary-950: #edecf8;
+
+  --accent-50: #0e0e0b;
+  --accent-100: #1d1d16;
+  --accent-200: #39392d;
+  --accent-300: #565643;
+  --accent-400: #72725a;
+  --accent-500: #8f8f70;
+  --accent-600: #a5a58d;
+  --accent-700: #bcbca9;
+  --accent-800: #d2d2c6;
+  --accent-900: #e9e9e2;
+  --accent-950: #f4f4f1;
+
+}
+*/
