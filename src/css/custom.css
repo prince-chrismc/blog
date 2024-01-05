@@ -91,11 +91,11 @@ nav div {
 }
 
 #__docusaurus {
-  opacity: 0.6;
   background-size: cover;
   background-position: top;
-  background-image: url("/img/background-shapes.svg");
+  background-image: var(--background-image);
 }
+
 
 /*
 https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=Poppins-Poppins
@@ -107,6 +107,8 @@ https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=
   --primary: #48a8a5;
   --secondary: #8C87D4;
   --accent: #7b7b60;
+  --background-image: url("/img/background-shapes-light.svg");
+
 }
 
 :root[data-theme="dark"] {
@@ -115,6 +117,8 @@ https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=
   --primary: #57b7b4;
   --secondary: #302B78;
   --accent: #9f9f84;
+  --background-image: url("/img/background-shapes-dark.svg");
+
 }
 
 /*
