@@ -8,7 +8,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Chris\' Blog',
+  title: 'Modern C++ DevOps',
   tagline: 'DevOps for Modern C++ Developers',
   favicon: 'img/logo.png',
 

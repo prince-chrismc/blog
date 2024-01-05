@@ -19,9 +19,8 @@
   --ifm-footer-background-color: #e1f4f3;
   --ifm-font-color-base: #0e2524;
 
-  --ifm-link-color:#48a8a5;
-
-  --ifm-footer-title-color: #7b7b60;
+  --ifm-link-color: var(--primary);
+  --ifm-footer-title-color: var(--accent);
 
 
   --ifm-code-font-size: 95%;
@@ -47,9 +46,8 @@
   --ifm-footer-background-color: #0B1E1D;
   --ifm-font-color-base: #DAF1F0;
 
-  --ifm-link-color:#57b7b4;
-
-  --ifm-footer-title-color: #9f9f84;
+  --ifm-link-color: var(--primary);
+  --ifm-footer-title-color: var(--accent);
 
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
@@ -68,7 +66,7 @@
   padding: 3em 5em;
 }
 
-@media (max-width: 996px){
+@media (max-width: 996px) {
   .footer {
     border-radius: 0;
     margin: 0;
@@ -78,22 +76,29 @@
 
 header h1,
 header h2 a {
-  background: linear-gradient(120deg,var(--primary),var(--accent));
+  background: linear-gradient(120deg, var(--primary), var(--accent));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .avatar__name a {
-  color: var(--secondary);
+  color: var(--accent);
 }
 
+nav div {
+  color: var(--accent);
+}
+
+/*
+https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=Poppins-Poppins
+*/
 
 :root[data-theme="light"] {
   --text: #0e2524;
   --background: #e1f4f3;
   --primary: #48a8a5;
-  --secondary: #8c87d4;
+  --secondary: #8C87D4;
   --accent: #7b7b60;
 }
 
@@ -101,8 +106,8 @@ header h2 a {
   --text: #daf1f0;
   --background: #0b1e1d;
   --primary: #57b7b4;
-  --secondary: #595593;
-  --accent: #a0a085;
+  --secondary: #302B78;
+  --accent: #9f9f84;
 }
 
 /*
