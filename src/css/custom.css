@@ -90,6 +90,13 @@ nav div {
   color: var(--accent);
 }
 
+#__docusaurus {
+  opacity: 0.6;
+  background-size: cover;
+  background-position: top;
+  background-image: url("/img/background-shapes.svg");
+}
+
 /*
 https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=Poppins-Poppins
 */
