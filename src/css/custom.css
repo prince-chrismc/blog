@@ -96,6 +96,9 @@ nav div {
   background-image: var(--background-image);
 }
 
+article.override-margin-bottom--sm{
+  margin-bottom: 0.5rem !important;
+}
 
 /*
 https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=Poppins-Poppins
