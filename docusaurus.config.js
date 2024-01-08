@@ -9,22 +9,14 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Modern C++ DevOps',
-  tagline: 'DevOps for Modern C++ Developers',
+  tagline: 'DevOps Best Practices for Modern C++ Developers',
   favicon: 'img/logo.png',
 
   // Set the production url of your site here
-  url: 'https://prince-chrismc.github.io',
+  url: 'https://moderncppdevops.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/blog/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'prince-chrismc', // Usually your GitHub org/user name.
-  projectName: 'blog', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  baseUrl: '/',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -41,10 +33,9 @@ const config = {
         theme: {
           customCss: ['./src/css/custom.css'],
         },
-        docs: false, // Optional: disable the docs plugin
+        docs: false, // disable the docs plugin
         blog: {
           routeBasePath: '/', // Serve the blog at the site's root
-          /* other blog options */
         },
       },
     ],
@@ -53,8 +44,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // TODO: add social card
-      image: 'img/logo.png',
+      image: 'img/social-preview.png',
       navbar: {
         title: 'Modern C++ DevOps',
         logo: {
