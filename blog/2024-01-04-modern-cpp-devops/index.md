@@ -1,7 +1,7 @@
 ---
 slug: modern-cpp-devops
-title: "Harmonizing DevOps and Modern C++: A Symphony of Efficiency"
 image: ./social-preview.png
+title: "Harmonizing DevOps and Modern C++: A Symphony of Efficiency"
 description: "Explore the fusion of DevOps best practices and Modern C++ precision in our blog—unlocking secrets for seamless, efficient software development."
 authors: [chris]
 tags: [bonjour, devops]

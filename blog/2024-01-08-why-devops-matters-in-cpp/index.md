@@ -1,5 +1,6 @@
 ---
 slug: why-devops-in-cpp
+image: ./social-preview.png
 title: "Unveiling the Power of C++ DevOps: Bridging Disciplines for Seamless Development"
 description: Explore the transformative synergy of C++ development and DevOps practices in our insightful blog. Uncover how the cultural shift advocated by DevOps aligns seamlessly with the historical and current roles within the C++ ecosystem, addressing prevalent challenges faced by developers. Dive deep into the philosophy, success stories, and specialized tools like CMake, Spack, and Xmake that redefine efficiency in C++ DevOps. From dependency management to build script complexities, discover how embracing the principles of DevOps not only streamlines processes but also fosters a collaborative and efficient development environment. Join us on this journey where software development meets cultural transformation, empowering teams to deliver high-quality code with speed, reliability, and precision.
 authors: [chris]
