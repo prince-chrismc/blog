@@ -5,7 +5,6 @@ title: "Unveiling the Power of C++ DevOps: Bridging Disciplines for Seamless Dev
 description: Explore the transformative synergy of C++ development and DevOps practices in our insightful blog. Uncover how the cultural shift advocated by DevOps aligns seamlessly with the historical and current roles within the C++ ecosystem, addressing prevalent challenges faced by developers. Dive deep into the philosophy, success stories, and specialized tools like CMake, Spack, and Xmake that redefine efficiency in C++ DevOps. From dependency management to build script complexities, discover how embracing the principles of DevOps not only streamlines processes but also fosters a collaborative and efficient development environment. Join us on this journey where software development meets cultural transformation, empowering teams to deliver high-quality code with speed, reliability, and precision.
 authors: [chris]
 tags: [devops, platform engineering, cpp, modern c++, ci/cd, continuous integration, continuous delivery, build automation, c++ build tools, cmake, xmake, spack, conan, vcpkg, bazel]
-unlisted: true
 ---
 
 In the ever-evolving landscape of software development, the transformative influence of DevOps cannot be overstated. It has reshaped how teams collaborate, develop, build, test, and ultimately deliver applications. DevOps is more than a mere collection of practices or tools; it embodies a cultural shift, fostering collaboration and communication among software developers, QA professionals, and IT operations.
