@@ -1,11 +1,10 @@
 ---
 slug: devops-applied-to-cpp
-# image: ./social-preview.png
+image: ./social-preview.png
 title: "Revolutionizing C++ Development: A DevOps Odyssey"
 description: "Unlock the Future of C++ Development with DevOps: Explore how cutting-edge technologies like Artifact Management, Infrastructure as Code, and Platforms as a Service revolutionize the C++ ecosystem. Dive into solutions for managing dependencies, optimizing build times, and streamlining continuous integration pipelines. Join us on a DevOps odyssey where challenges transform into opportunities, propelling C++ developers towards efficiency, scalability, and resilience. Embrace the synergy of DevOps principles in our latest blog for a transformative journey in the world of C++ development."
 authors: [chris]
 tags: [devops, c++, cpp, modern c++, continuous integration, continuous delivery, cmake projects, modular software architecture, improving build times, artifact management, dependency management, reproducible builds, IaC, PaaS, orchestration]
-unlisted: true
 ---
 
 In the ever-evolving landscape of C++ development, challenges abound, but the journey to overcome them has a powerful ally: DevOps. The annual ISO committee's survey paints a vivid picture of the hurdles faced by C++ developers, but within these challenges lie opportunities for transformation through DevOps principles and cutting-edge technologies like Artifact Management, Infrastructure as Code (IaC), and Platforms as a Service (PaaS).
