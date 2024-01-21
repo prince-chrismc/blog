@@ -1,0 +1,262 @@
+---
+slug: windows-iac-for-cpp
+image: ./social-preview.png
+title: "From Scratch to Scalable: Seamless CI for C++ Windows Build Infrastructure with Ansible and Terraform"
+description: "Tired of Windows CI nightmares? Struggling with inconsistent builds, manual configuration, and unreliable environments? Break free with this comprehensive guide to seamless C++ CI on Windows using Ansible and Terraform. Learn how to: Automate build configuration with Ansible playbooks for rock-solid reproducibility. Standardize toolchains for a consistent developer experience across machines.Scale effortlessly from local VMs to the Azure cloud for on-demand build capacity. Bridge the gap between developer needs and DevOps control with declarative infrastructure. Embrace robust builds and flexible CI with Ansible and Terraform. Start building better, faster, and smarter today! This epic guide unlocks the secrets of powerful CI automation for Windows machines with Ansible and Terraform. Forget manual setup, inconsistent environments, and build headaches. Dive into: Effortless configuration of C++ toolchains like Mingw-W64, CMake, and Ninja. Streamlined installation of Visual Studio Code and essential extensions. Pinning dependencies for predictable and reproducible builds. Effortless migration to the cloud with Azure VM provisioning and domain joining."
+authors: [chris]
+tags: ["c++", "devops", "windows", "ci", "continuous integration", "ansible", "terraform", "azure cloud", "infrastructure as code", "mingw-w64", "cmake", "ninja", "visual studio enterprise","visual studio code", "reproducible builds", "cloud migration", "azure vm", "vm domain join", "devops automation"]
+unlisted: true
+---
+
+One of the biggest challenges in C++ is setting up CI from scratch and of that, the biggest pain point is the system administration which can be very disconnected from the development tools. In order to bridge this gap we can leverage Infrastructure as Code (IaC) targeting existing machines, locally in our network or in the cloud, is an excellent enhancement to ensure consistent reproducible builds. Having version controlled configuration management tied to the codebase is key, this will allow us to deterministically install all the tools required with confidence even in the far far future.
+
+Let's walk through adding Ansible to handle configuring a Windows virtual machine. These ideas apply to Unix environments as well but we can tackle those in a future post. Once we've gained control over our build environments, we can tackle availability and scalability by introducing Terraform to help provision and initialize new Windows instances in Azure. This two prong solution enables both a path for migrating to the cloud and establishing a hybrid setup.
+
+<!-- truncate -->
+
+Let's get setup! To set up, start with a freshly-provisioned, fully patched VM from IT. Enable [WinRM](https://learn.microsoft.com/en-us/windows/win32/winrm/portal) using a [Group Policy Object](https://learn.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#configuring-winrm-with-group-policy) for seamless remote management. If you are not connecting to a domain, follow the [Ansible Setup Guide](https://docs.ansible.com/ansible/latest/os_guide/windows_setup.html#winrm-setup). Ansible's Windows support, coupled with its extensive library of [built-in modules](https://docs.ansible.com/ansible/2.9/modules/list_of_windows_modules.html#windows-modules), streamlines configuration, often eliminating the need for manual PowerShell commands.
+
+With that done, make sure to [install Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html) and prepare to use it's [Windows support](https://docs.ansible.com/ansible/latest/os_guide/windows_usage.html). You'll need to add Chocolatey to Ansible support since it's not included by default, simply running `ansible-galaxy collection install chocolatey.chocolatey` will do the trick.
+
+With everything setup, you are ready for the exciting bits (or bytes).
+
+## Configuring an Existing Machine
+
+The various operations that are required to configure the machines are organized into [Playbooks](https://docs.ansible.com/ansible/latest/getting_started/basic_concepts.html#playbooks). With these we can specify a host with a list of tasks we want to execute. This declarative approach allows you to easily specify the final state.
+
+We are going to focus on a cross-compiled applications whose toolchain focuses on Mingw-64 environment where developers primarily work with CMake and Ninja.
+
+Let's make a `playbook.yml`!
+
+```yaml
+- name: Install software on Windows machine
+  hosts: windows_vm
+  vars:
+    # There's lots of authentication options to pick from
+    # https://docs.ansible.com/ansible/latest/os_guide/windows_winrm.html#winrm-authentication-options
+    ansible_user: username
+    ansible_password: password
+  tasks:
+    - name: Install C++ dev tools using Chocolatey
+      win_chocolatey:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - mingw
+        - cmake
+        - ninja
+```
+
+This playbook will install [Chocolatey](https://chocolatey.org/) if it's missing and then loop over the list of tools we provided. [Running a playbook](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html#running-playbooks) is simple, just run `ansible-playbook playbook.yml`.
+
+Ansible has a "check mode" feature which is incredibly powerful to help prevent configuration drift.
+This is incredibly important if the build nodes are persistent and re-used for different CI/CD jobs; as scripts ran during the build process can modify the environment and have unintended consequences.
+This can be done with the same playbook by calling `ansible-playbook --check playbook.yml` which used to verify the integrity.
+
+:::tip
+
+This can be scaled very easily with an [inventory](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) of hosts broken into groups which can be references as a whole.
+Making workflows like applying security updates to all the nodes seamless.
+
+:::
+
+Easy enough.
+
+In order to streamline setting up developer systems we are also going to include Visual Studio Code with a few extra extensions installed. For this we can going to add [WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/) to the mix. This tool is the client to the Windows Package Manager service simplifies installing many Microsoft tools as well as popular software like [video conferencing](https://winget.run/search?query=conferencing) applications. For extra points with the developers, we are going to include their favorite VSCode extensions.
+
+```yaml title='Adding developer tools to your playbook.yml'
+    - name: Install WinGet
+      win_chocolatey:
+        name: winget-cli
+        state: present
+    - name: Install C++ IDE using WinGet
+      win_shell: |
+        winget install -e --id "{{ item }}"
+      loop:
+        - Microsoft.VisualStudioCode
+        - Microsoft.VisualStudio.2022.Enterprise.Preview
+    - name: Run PowerShell script
+      win_shell: |
+        $script = @"
+        # PowerShell script to activate and install software
+        Write-Host "Activate MSVC Enterprise 2022..."
+        "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\StorePID.exe" AAAAA-BBBBB-CCCCC-DDDDD-EEEEE 09660
+
+        Write-Host "Installing VSCode Extensions..."
+        code --install-extension ms-vscode.cpptools-extension-pack
+        code --install-extension ms-vscode.cmake-tools
+
+        Write-Host "Verifying Installed Extensions..."
+        code --list-extensions --show-versions
+        "@
+        Invoke-Expression -Command $script
+```
+
+One thing to take note is we can very easily run powershell scripts native on the machine. This gives use the flexibility to run extra commands like [activating Visual Studio](https://learn.microsoft.com/en-us/visualstudio/install/automatically-apply-product-keys-when-deploying-visual-studio?view=vs-2022) with our product key. Extra care is be needed if you want to preserve `--check-mode` when directly running powershell cmdlets.
+
+With that, we can setup (and update) developer environments with all the tools they require while allowing verification that the correct tools are installed to prevent drift.
+
+### Pin Down Required Packages
+
+For DevOps precision, meticulous version control of tools and dependencies is non-negotiable. It ensures a uniform environment across the development team, preventing compatibility issues and unpredictable behavior. The ability to pinpoint and manipulate specific versions empowers teams to troubleshoot and deliver software with a robust foundation.
+
+Since we are using two different tools, we'll need to solve it for each of them respectively.
+
+Going in order, we'll update Chocolatey to [loop over the name and version](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html#iterating-over-a-list-of-hashes) we want to install and enable the [pinned feature](https://docs.chocolatey.org/en-us/choco/commands/pin) to prevent upgrades. Playbooks support YAML syntax which allows use to have custom JSON objects with individualized properties for our use case.
+
+```yml
+  tasks:
+    - name: Install C++ dev tools using Chocolatey
+      win_chocolatey:
+        name: "{{ item.name }}"
+        version: "{{ item.version }}" # Exact version
+        pinned: true # Only explicit upgrades
+        state: present
+      loop:
+        - { name: 'mingw', version: '13.2.0' }
+        - { name: 'cmake', version: '3.27.9' }
+        - { name: 'ninja', version: '1.11.0' }
+        - { name: 'winget-cli', version: '1.6.3482' }
+```
+
+As these are the tools used to make the final produced shipping to customers that we are testing with we want to make sure these are exactly same every single time.
+
+Tackling WinGet, we'll use the [pin command](https://learn.microsoft.com/en-us/windows/package-manager/winget/pinning). Though Chocolatey has some support for version ranges, WinGet's is more complete and since it's only used for the developer tools, we can install the latest patch version with confidence.
+
+```yaml
+    - name: Install C++ IDE using WinGet
+      win_shell: |
+        winget pin add -e --id "{{ item.name }}" -v "{{ item.version_range }}"
+        winget install -e --id "{{ item.name }}"
+      loop:
+        - { name: 'Microsoft.VisualStudioCode', version_range: '1.76.*' }
+        - { name: 'Microsoft.VisualStudio.2022.Enterprise.Preview', version_range: '17.6.*' }
+```
+
+### Taking a Declarative Approach
+
+Declarative code is often more concise and easier to read. Developers can focus on the desired result rather than navigating through detailed step-by-step instructions. Changes can be made to the underlying system or logic without altering the overall structure of the code. With less emphasis on explicit instructions, there's a reduced chance of introducing errors due to misunderstandings or misinterpretations of imperative commands.
+
+:::tip
+
+For longevity, this separation between infrastructure and toolchain will help if you decided to transition to a [Platform Engineering](https://thenewstack.io/platform-engineering/) approach with an IDP ([internal developer portal](https://thenewstack.io/internal-developer-portal-what-it-is-and-why-you-need-one/)) for example.
+
+:::
+
+Doing so is simple, we can run `choco export packages.config` to generate a list of dependencies.
+This will give us a [manifest](https://docs.chocolatey.org/en-us/guides/create/exporting-packages#installing-packages-from-a-manifest) of all the tools installed on the system.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <package id="mingw" version="13.2.0" />
+    <package id="cmake" version="3.27.9" />
+    <package id="ninja" version="1.11.0" />
+    <package id="winget-cli" version="1.6.3482" />
+</packages>
+```
+
+For this example, the windows packages from WinGet are not critical for production builds, as such we'll skip those, but you are more then welcome to read their documentation for [`install --manifest`](
+https://learn.microsoft.com/en-us/windows/package-manager/winget/install#local-install).
+
+## Migrating to the Cloud
+
+Here are the key advantages of incorporating cloud instances into a hybrid build infrastructure setup:
+
+1. Scalability and Elasticity:
+   - Handle build spikes: Cloud instances can be provisioned quickly and on-demand, providing the flexibility to handle sudden surges in build requests or fluctuating workloads.
+   - Reduce costs: Cloud resources can be scaled down during periods of low activity, optimizing resource usage and cost efficiency.
+2. Faster Build Times:
+   - Access to powerful resources: Cloud instances often offer high-performance CPUs, GPUs, and large amounts of memory, accelerating build processes, especially for resource-intensive tasks.
+   - Parallelization: Multiple cloud instances can be used in parallel to distribute builds across multiple machines, further reducing build times.
+3. Improved Developer Productivity:
+   - Self-service provisioning: Developers can often provision cloud instances themselves, reducing reliance on IT teams and enabling faster access to build environments.
+   - Experimentation and isolation: Cloud instances provide isolated environments for experimentation and testing, reducing the risk of affecting production systems.
+
+It is possible to setup Windows VMs on Azure with both Terraform and Ansible, however this can be fairly involved. Here are some resources if you want to pursue that route.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="terraform" label="Terraform" default>
+[Writing your own a provider](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-terraform) to create a new Azure VM. Taking an extra step to [join a domain](https://pixelrobots.co.uk/2019/03/use-terraform-to-join-a-new-azure-virtual-machine-to-a-domain/) or [this alternative](https://github.com/hashicorp/terraform/issues/14875#issuecomment-304828533) method.
+  </TabItem>
+  <TabItem value="ansible" label="Ansible">
+Using a [playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/76122f7/vm_create_windows.yml) to create an Azure Windows VM with [some extra options](https://dev.to/cloudskills/deploy-a-windows-vm-to-azure-with-ansible-2l9m) in you need them as well as [joining a domain](https://github.com/Azure/azure_preview_modules/issues/326).
+  </TabItem>
+</Tabs>
+
+Thankfully, there's a flourishing community around Terraform Windows Azure support and there are providers that can help make this very easy.
+
+```hcl title='main.tf'
+provider "azurerm" {
+  # Your Azure credentials
+  features {}
+}
+
+module "virtual-machine" {
+  source  = "kumarvna/virtual-machine/azurerm"
+  version = "2.1.0"
+
+  # define resource group and subnet
+  virtual_machine_name      = "win-machine"
+  os_flavor                 = "windows"
+  windows_distribution_name = "windows2019dc"
+  virtual_machine_size      = "Standard_A2_v2"
+  admin_username            = "azureadmin"
+  admin_password            = "P@$$w0rd1234!"
+  instances_count           = 1
+
+  nsg_inbound_rules = [
+    {
+      name                   = "winrm"
+      destination_port_range = "5986"
+      source_address_prefix  = "*"
+    },
+  ]
+}
+
+module "domain-join" {
+  source  = "kumarvna/domain-join/azurerm"
+  version = "1.1.0"
+
+  virtual_machine_id        = element(concat(module.virtual-machine.windows_virtual_machine_ids, [""]), 0)
+  active_directory_domain   = "myorg.com"
+  active_directory_username = "azureadmin"
+  active_directory_password = "P@$$w0rd1234!"
+
+  # Required TAGs for Azure resources
+}
+```
+
+Now you can run Ansible normally with `ansible-playbook -i '${terraform.virtual-machine.windows_vm_private_ips},' playbook.yml` or you can add it as an extra step to the `main.tf` with:
+
+```hcl
+  provisioner "local-exec" {
+    command = "ansible-playbook -i '${virtual-machine.windows_vm_private_ips},' playbook.yml"
+  }
+```
+
+## Further Considerations
+
+For a comprehensive understanding, let's address some additional aspects.
+
+- Testing. Testing. Testing. This would not be software engineering without a proper testing strategy.
+- Version scheme. Be able to track changes and re-deploy older environments when required.
+- Create costume base [VM images on Azure](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/image-builder-powershell)
+- Handling Legacy systems, managing a Windows 7 machines for example, that do not support these tools.
+- Using KeyVault to a more secure automatic login [reference](https://1337.uk/articles/azure-devops-terraform-secure-vm-domain-join)
+- Using the [WSL2 shell](https://medium.com/@fkeil/windows-ansible-chocolatey-a-beautifull-integration-acb08e9ca468)
+- Supporting [Linux with Ansible](https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management)
+
+## Conclusion
+
+By embracing Infrastructure as Code (IaC), like Ansible and Terraform show in the post, you can empower your C++ build infrastructure with:
+
+- Streamlined Setup: Eliminate tedious manual configuration and ensure consistent, reproducible builds across build environments environments.
+- Scalability and Elasticity: Quickly adjust resources to handle sudden build spikes or fluctuating workloads, all while optimizing cost efficiency.
+- Improved Developer Productivity: Grant developers self-service provisioning and isolated, disposable environments for experimentation and testing.
+- Seamless Hybrid and Cloud Deployment: Bridge the gap between your local network and the cloud, enabling a flexible and future-proof approach to CI.
+
+Take control of your C++ build process today. Embrace IaC and unlock the agility, efficiency, and scalability you need to deliver software faster and with greater confidence.

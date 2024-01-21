@@ -29,6 +29,7 @@
   --docusaurus-tag-list-border: var(--accent);
 
   --text5: hsl(177, 45%, 10%, 5%);
+  --ifm-color-success-contrast-background: rgb(200, 246, 200);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -49,6 +50,8 @@
   --ifm-link-color: var(--primary);
   --ifm-footer-title-color: var(--accent);
   --ifm-heading-color: var(--accent);
+
+  --ifm-color-success-contrast-background: rgb(0, 60, 0);
 
 
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
@@ -107,6 +110,13 @@ nav div {
 
 article.override-margin-bottom--sm {
   margin-bottom: 0.5rem !important;
+}
+
+div.tabs-container {
+  border: 2px solid var(--secondary);
+  border-radius: 15px;
+  padding: 0em 1em 1rem;
+  margin-bottom: 0.5em;
 }
 
 /*
