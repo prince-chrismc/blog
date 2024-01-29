@@ -93,7 +93,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.vsDark,
-        additionalLanguages: ['hcl'],
+        additionalLanguages: ['hcl', 'json', 'cmake', 'bash'],
       },
       colorMode: {
         defaultMode: 'dark',
