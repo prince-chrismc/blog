@@ -260,7 +260,7 @@ This is a bonus shout out. You should not be considering these but they deserve 
 ### 19. C++ Archive Network
 
 * **Strengths:**
-  * Supports the [Waf](waf.io) build system
+  * Supports the [Waf](https://waf.io/) build system
 * **Weaknesses:**
   * Not primarily designed for C++ development anymore
 
