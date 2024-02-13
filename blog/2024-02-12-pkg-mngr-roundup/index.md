@@ -150,7 +150,7 @@ Build2 is a modern and efficient build system designed for C and C++ projects, o
   * Aims to rebuild the C++ ecosystem with modern build principles.
   * Uniform and consistent interface across platforms and compilers.
 * **weaknesses:**
-  * Relatively [new feature for dependency management](https://stage.build2.org/)
+  * Relatively [new feature for dependency management](https://cppget.org/)
   * Smaller community and ecosystem compared to established tools.
   * Might require more configuration and scripting knowledge to fully utilize.
 
@@ -193,7 +193,19 @@ Tutorial Video: [link](https://youtu.be/cxNDmugjlFk?si=fUnr7I73CTHWVZeJ)
   * Limited C++ package selection compared to dedicated managers.
   * Potential complexity due to multi-language management.
 
-### 14. Gradle
+### 14. Mamba
+
+* **Strengths:**
+  * Reimplementation of conda optimized for speed
+  * Built-on existing dependency resolver implementation
+  * Lightweight client with a core subset of features for ease-of-use
+  * Built on conda's package ecosystem
+* **Weaknesses:**
+  * Newer and less mature with a smaller community and ecosystem
+  * Limited C++ package selection compared to dedicated managers
+  * Might introduce challenges with standard C++ build systems and tools
+
+### 15. Gradle
 
 Gradle is a build automation tool known for its flexibility and scalability, primarily used for Java projects but also supporting other languages like C++ through plugins. It handles dependency management, compilation, testing, and packaging of software.
 
@@ -207,7 +219,7 @@ Gradle is a build automation tool known for its flexibility and scalability, pri
   * Steeper learning curve compared to some C++-specific tools.
   * Performance overhead for simple C++ projects
 
-### 15. Conda
+### 16. Conda
 
 Conda is a versatile package manager and environment management system primarily used for Python, but it also supports other languages like C++ and R. It simplifies dependency management and enables easy creation, sharing, and reproduction of software environments across different platforms.
 
@@ -221,7 +233,7 @@ Conda is a versatile package manager and environment management system primarily
   * Not primarily designed for C++ development, requiring additional setup for C++ packages.
   * C++ package selection might be smaller than dedicated C++ package managers.
 
-### 16. NixOS
+### 17. NixOS
 
 The Nix package manager is a powerful and purely functional package manager used in NixOS and other Linux distributions. It enables users to manage software packages and configurations in a reproducible and isolated manner, facilitating atomic upgrades and rollbacks.
 
@@ -235,7 +247,7 @@ The Nix package manager is a powerful and purely functional package manager used
   * Less mainstream with smaller community and ecosystem.
   * C++ package selection might be smaller than dedicated managers.
 
-### 17. CMake's FetchContent
+### 18. CMake's FetchContent
 
 * **Strengths:**
   * Seamless integration avoids external tools and complexity.
@@ -250,14 +262,14 @@ The Nix package manager is a powerful and purely functional package manager used
 
 This is a bonus shout out. You should not be considering these but they deserve credit.
 
-### 18. Biicode
+### 19. Biicode
 
 * **Strengths:**
   * Easy to use with a focus on dependency management
 * **Weaknesses:**
   * No longer Maintained
 
-### 19. C++ Archive Network
+### 20. C++ Archive Network
 
 * **Strengths:**
   * Supports the [Waf](https://waf.io/) build system
@@ -273,3 +285,9 @@ The best C++ package manager for you will depend on your specific needs and pref
 * **Your experience level:** If you are new to C++ package managers, vcpkg or Conan are excellent choices which can very quickly get you up and running.
 
 Ultimately, the best way to choose a C++ package manager is to try out a few different options and see which one you like best.
+
+:::note[Changelog]
+
+2024-02-13: Added Mamba suggested by u/mjklaim
+
+:::
