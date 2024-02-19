@@ -30,6 +30,19 @@
 
   --text5: hsl(177, 45%, 10%, 5%);
   --ifm-color-success-contrast-background: rgb(200, 246, 200);
+
+  --color-secondary-100: #e7eaf8;
+  --color-secondary-200: #d3d6f2;
+  --color-secondary-300: #b8bce9;
+  --color-secondary-400: #9b9bde;
+  --color-secondary-500: #8c87d4;
+  --color-secondary-600: #7669c2;
+  --color-secondary-700: #6558aa;
+  --color-secondary-800: #53498a;
+  --color-secondary-900: #46406f;
+
+  --ifm-blockquote-color: var(--color-secondary-900);
+  --ifm-blockquote-border-color: var(--color-secondary-500);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -53,10 +66,21 @@
 
   --ifm-color-success-contrast-background: rgb(0, 60, 0);
 
-
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --text5: hsl(177, 45%, 90%, 5%);
 
+  --color-secondary-100: #e0e6ff;
+  --color-secondary-200: #c7d0fe;
+  --color-secondary-300: #a5b1fc;
+  --color-secondary-400: #8189f8;
+  --color-secondary-500: #6463f1;
+  --color-secondary-600: #5446e5;
+  --color-secondary-700: #4738ca;
+  --color-secondary-800: #3a30a3;
+  --color-secondary-900: #302b78;
+
+  --ifm-blockquote-color: var(--color-secondary-100);
+  --ifm-blockquote-border-color: var(--color-secondary-700);
 }
 
 .navbar {
@@ -127,7 +151,7 @@ https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=
   --text: #0e2524;
   --background: #e1f4f3;
   --primary: #48a8a5;
-  --secondary: #8C87D4;
+  --secondary: #8C87D4; /*chetwode*/
   --accent: #7b7b60;
   --background-image: url("/img/background-shapes-light.svg");
 
@@ -137,7 +161,7 @@ https://www.realtimecolors.com/?colors=daf1f0-0b1e1d-57b7b4-302b78-9f9f84&fonts=
   --text: #daf1f0;
   --background: #0b1e1d;
   --primary: #57b7b4;
-  --secondary: #302B78;
+  --secondary: #302B78; /*minsk*/
   --accent: #9f9f84;
   --background-image: url("/img/background-shapes-dark.svg");
 }
