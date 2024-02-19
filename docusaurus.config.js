@@ -62,19 +62,28 @@ const config = {
       footer: {
         links: [
           {
-            title: 'Community',
+            title: 'Dive Deeper',
             items: [
               {
                 label: 'YouTube',
                 href: 'https://www.youtube.com/@christophermcarthur',
               },
+            ],
+          },
+          {
+            title: 'Keep Talking',
+            items: [
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/prince_chrismc',
               },
               {
                 label: 'LinkedIn',
-                href: 'https://www.linkedin.com/in/christophermcarthur1996/'
+                href: 'https://www.linkedin.com/in/christophermcarthur1996/',
+              },
+              {
+                label: 'Reddit',
+                href: 'https://www.reddit.com/user/prince-chrismc',
               },
             ],
           },
