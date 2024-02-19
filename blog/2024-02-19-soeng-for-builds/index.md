@@ -1,6 +1,6 @@
 ---
 slug: soeng-for-builds
-# image: ./social-preview.png
+image: ./social-preview.png
 title: DevOps Is Software Engineering for Your Builds
 description: "Battling manual builds and dependency nightmares in C++? Consider a dedicated DevOps role on your team! This post explores how a skilled DevOps engineer, often misunderstood in the C++ community, can revolutionize your workflow. Imagine your developers focused on crafting robust code while a dedicated pro automates builds, manages dependencies, and implements CI/CD for faster releases. But it's not just tools – a DevOps expert bridges the dev-ops gap, navigates the C++ ecosystem like a pro, and automates repetitive tasks with mastery. This translates to efficiency, reliability, and happier developers. Ready to unlock your C++ team's potential? Dive in, explore the possibilities, and join the discussion on shaping the future of C++ development together!"
 authors: [chris]
