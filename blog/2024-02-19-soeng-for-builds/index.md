@@ -51,7 +51,7 @@ This section is a small rant. [@me](https://twitter.com/intent/tweet?text=%F0%9F
 
 :::
 
-While [criticism](https://www.linkedin.com/feed/update/urn:li:activity:7159324126099193856?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7159324126099193856%2C7159438503947161600%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287159438503947161600%2Curn%3Ali%3Aactivity%3A7159324126099193856%29) of a _"fragile hodgepodge system of jerry-rigged things that were never intended to work"_ resonates with many in the C++ community, I'd argue that is a bias based on the fragmentation within the ecosystem. It's essential to broaden our perspectives before drawing conclusions.
+While [criticism](https://www.linkedin.com/feed/update/urn:li:activity:7159324126099193856?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7159324126099193856%2C7159438503947161600%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287159438503947161600%2Curn%3Ali%3Aactivity%3A7159324126099193856%29) of a _"fragile hodgepodge system of jerry-rigged things that were never intended to work together"_ resonates with many in the C++ community, I'd argue that is a bias based on the fragmentation within the ecosystem. It's essential to broaden our perspectives before drawing conclusions.
 
 In many ecosystems, building projects is trivial, with straightforward commands like `cargo build`, `npm build`, or `maven build`. This is why we only hear about CI/CD with no "continuous building" concept which is completely skipped over. Once the challenge of building applications at scale for numerous developers multiple times a day is overcome, it becomes less of a focal point at conferences. This is why `cmake --build --preset release` is a huge step in the [right direction](/simple-ci-with-presets).
 
