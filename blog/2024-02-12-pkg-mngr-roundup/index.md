@@ -181,7 +181,19 @@ Tutorial Video: [link](https://youtu.be/cxNDmugjlFk?si=fUnr7I73CTHWVZeJ)
   * Smaller community and ecosystem compared to established tools.
   * Might require more configuration and scripting knowledge to fully utilize.
 
-### 13. Pixi (prefix-dev)
+### 13. SoupBuild
+
+SoupBuild is a distributed build system with an almost no compatibility definition. This is similar to Bazel land Vcpkg respectively - both combined into a cargo inspired build tool chain.
+
+* **Strengths:**
+  * Defines to ABI compatibility
+  * Rebuilds from source and distributes builds
+* **Weaknesses:**
+  * Limit support for different toolchains
+  * Very opinionated
+  * Only in Alpha preview
+
+### 14. Pixi (prefix-dev)
 
 * **Strengths:**
   * Simplified experience with a Cargo-like CLI.
@@ -193,7 +205,7 @@ Tutorial Video: [link](https://youtu.be/cxNDmugjlFk?si=fUnr7I73CTHWVZeJ)
   * Limited C++ package selection compared to dedicated managers.
   * Potential complexity due to multi-language management.
 
-### 14. Mamba
+### 15. Mamba
 
 * **Strengths:**
   * Reimplementation of conda optimized for speed
@@ -205,7 +217,7 @@ Tutorial Video: [link](https://youtu.be/cxNDmugjlFk?si=fUnr7I73CTHWVZeJ)
   * Limited C++ package selection compared to dedicated managers
   * Might introduce challenges with standard C++ build systems and tools
 
-### 15. Gradle
+### 16. Gradle
 
 Gradle is a build automation tool known for its flexibility and scalability, primarily used for Java projects but also supporting other languages like C++ through plugins. It handles dependency management, compilation, testing, and packaging of software.
 
@@ -219,7 +231,7 @@ Gradle is a build automation tool known for its flexibility and scalability, pri
   * Steeper learning curve compared to some C++-specific tools.
   * Performance overhead for simple C++ projects
 
-### 16. Conda
+### 17. Conda
 
 Conda is a versatile package manager and environment management system primarily used for Python, but it also supports other languages like C++ and R. It simplifies dependency management and enables easy creation, sharing, and reproduction of software environments across different platforms.
 
@@ -233,7 +245,7 @@ Conda is a versatile package manager and environment management system primarily
   * Not primarily designed for C++ development, requiring additional setup for C++ packages.
   * C++ package selection might be smaller than dedicated C++ package managers.
 
-### 17. NixOS
+### 18. NixOS
 
 The Nix package manager is a powerful and purely functional package manager used in NixOS and other Linux distributions. It enables users to manage software packages and configurations in a reproducible and isolated manner, facilitating atomic upgrades and rollbacks.
 
@@ -247,7 +259,7 @@ The Nix package manager is a powerful and purely functional package manager used
   * Less mainstream with smaller community and ecosystem.
   * C++ package selection might be smaller than dedicated managers.
 
-### 18. CMake's FetchContent
+### 19. CMake's FetchContent
 
 * **Strengths:**
   * Seamless integration avoids external tools and complexity.
@@ -262,14 +274,14 @@ The Nix package manager is a powerful and purely functional package manager used
 
 This is a bonus shout out. You should not be considering these but they deserve credit.
 
-### 19. Biicode
+### 20. Biicode
 
 * **Strengths:**
   * Easy to use with a focus on dependency management
 * **Weaknesses:**
   * No longer Maintained
 
-### 20. C++ Archive Network
+### 21. C++ Archive Network
 
 * **Strengths:**
   * Supports the [Waf](https://waf.io/) build system
@@ -289,5 +301,6 @@ Ultimately, the best way to choose a C++ package manager is to try out a few dif
 :::note[Changelog]
 
 2024-02-13: Added Mamba suggested by u/mjklaim
+2024-02-20: Added SoupBuild suggested by u/mwasplund
 
 :::
