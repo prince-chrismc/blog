@@ -4,7 +4,6 @@ image: ./social-preview.png
 description: "C++ developers have long struggled with package management and battling cryptic build systems. The Common Package Specification (CPS) aims to be a game-changer, offering a standardized way to describe dependencies. But is it a silver bullet or an overly ambitious proposal? This blog explores CPS, its potential benefits, and the questions it raises."
 authors: [chris]
 tags: [C++, Common Package Specification, CPS, dependency management, build systems, package managers, standardization, flexibility]
-unlisted: true
 ---
 
 # CPS: A Streamlined Future for C++ or Overly Specific?
