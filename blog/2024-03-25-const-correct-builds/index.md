@@ -1,10 +1,10 @@
 ---
+slug: const-correct-builds
 image: ./social-preview.png
 title: Const Correctness for C++ Builds
 description: "In the fast-paced world of software development, ensuring code quality and maintainability is crucial. This blog explores how seemingly unrelated concepts, const correctness in C++ and ephemeral builds from DevOps, come together to create a strong foundation for reliable software. We'll delve into const correctness and its benefits like preventing accidental modifications, improved code clarity, and compiler optimizations. We'll also explore ephemeral builds and their advantages such as reproducible builds, reduced complexity, and enhanced security. Additionally, we'll discuss popular tools for ephemeral builds and how Infrastructure as Code (IaC) complements this approach. Finally, we'll examine how version control ties const correctness and ephemeral builds together, establishing a unified Software Development Lifecycle (SDLC) and a single source of truth for your code and build environment. By combining these practices, you can ensure fewer bugs, easier maintenance, and ultimately, more dependable software."
 authors: [chris]
 tags: [const correctness, c++, ephemeral builds, devops, software development, build environments, version control, git, docker, kubernetes, iac, terraform, reliable software]
-unlisted: true
 ---
 
 In the ever-evolving world of software development, ensuring code quality and maintainability is paramount. Two seemingly unrelated concepts, const correctness in C++ and ephemeral build environments from DevOps, share a surprising connection, both aiming to build a strong foundation for reliable software.
