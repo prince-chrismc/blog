@@ -24,7 +24,7 @@
     "react-share": "^5.0.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.1.1",
+    "@docusaurus/module-type-aliases": "^3.2.0",
     "@docusaurus/types": "3.0.1"
   },
   "browserslist": {
