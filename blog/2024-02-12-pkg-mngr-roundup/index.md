@@ -221,7 +221,7 @@ SoupBuild is a distributed build system with an almost no compatibility definiti
 
 ### 16. Gradle
 
-Gradle is a build automation tool known for its flexibility and scalability, primarily used for Java projects but also supporting other languages like C++ through plugins. It handles dependency management, compilation, testing, and packaging of software.
+[Gradle](https://gradle.org/) is a build automation tool known for its flexibility and scalability, primarily used for Java projects but also supporting other languages like C++ through plugins. It handles dependency management, compilation, testing, and packaging of software.
 
 * **Strengths:**
   * Proven at managing complex build systems with a variety of dependencies, including C++.
@@ -235,7 +235,7 @@ Gradle is a build automation tool known for its flexibility and scalability, pri
 
 ### 17. Conda
 
-Conda is a versatile package manager and environment management system primarily used for Python, but it also supports other languages like C++ and R. It simplifies dependency management and enables easy creation, sharing, and reproduction of software environments across different platforms.
+[Conda](https://docs.conda.io/en/latest/) is a versatile package manager and environment management system primarily used for Python, but it also supports other languages like C++ and R. It simplifies dependency management and enables easy creation, sharing, and reproduction of software environments across different platforms.
 
 * **Strengths:**
   * Mature and established with a vast package ecosystem across various languages.
@@ -247,7 +247,20 @@ Conda is a versatile package manager and environment management system primarily
   * Not primarily designed for C++ development, requiring additional setup for C++ packages.
   * C++ package selection might be smaller than dedicated C++ package managers.
 
-### 18. CMake's FetchContent
+### 18. BitBake
+
+The Yocto project's [BitBake](https://docs.yoctoproject.org/bitbake/dev/index.html) is a complete embedded Linux system creation environment. BitBake is the build tool used within Yocto to manage the entire build process, including compiling source code, packaging software, and creating a final operating system image for your target device.
+
+* **Strengths:**
+  * Streamlined workflow within Yocto Project, managing dependencies from source to final image.
+  * Ensures consistent builds by meticulously controlling package versions within Yocto configuration.
+* **Weaknesses:**
+  * Primarily designed for Yocto Project and embedded development, less suitable for general C/C++ projects.
+  * Relies heavily on building dependencies from source, potentially time-consuming.
+  * Managing dependencies within Yocto recipes can be complex for beginners.
+  * Version constraints compared to some package managers.
+
+### 19. CMake's FetchContent
 
 * **Strengths:**
   * Seamless integration avoids external tools and complexity.
@@ -262,7 +275,7 @@ Conda is a versatile package manager and environment management system primarily
 
 This is a bonus shout out. You should not be considering these but they deserve credit.
 
-### 19. Buckaroo
+### 20. Buckaroo
 
 Buckaroo is a package manager designed for C++ developers using the Buck build system, streamlining dependency management and integration into projects for efficient development workflows.
 
@@ -274,14 +287,14 @@ Buckaroo is a package manager designed for C++ developers using the Buck build s
   * No longer actively maintained
   * Can be challenging to [pick the version](https://github.com/LoopPerfect/buckaroo/wiki/Understanding-the-Resolver)
 
-### 20. Biicode
+### 21. Biicode
 
 * **Strengths:**
   * Easy to use with a focus on dependency management
 * **Weaknesses:**
   * No longer Maintained
 
-### 21. C++ Archive Network
+### 22. C++ Archive Network
 
 * **Strengths:**
   * Supports the [Waf](https://waf.io/) build system
@@ -305,5 +318,6 @@ Ultimately, the best way to choose a C++ package manager is to try out a few dif
 * 2024-04-07:
   * Moved NixOS up the list because package selection vs the platform limitations and it's ability to make dedicated environments.
   * Moved Buckaroo to honorable mentions because it's not been updated in three years.
+  * Added BitBake
 
 :::
