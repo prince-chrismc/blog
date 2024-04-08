@@ -87,19 +87,7 @@ Hunter is a CMake-driven package manager for C and C++ projects, providing a sim
   * Smaller repository of libraries
   * Not as flexible for managing complex dependencies
 
-### 6. Buckaroo
-
-Buckaroo is a package manager designed for C++ developers using the Buck build system, streamlining dependency management and integration into projects for efficient development workflows.
-
-* **Strengths:**
-  * Designed for large-scale projects with many dependencies
-  * Can manage complex build systems
-  * Integrates well with other Buckaroo tools
-* **Weaknesses:**
-  * No longer actively maintained
-  * Can be challenging to [pick the version](https://github.com/LoopPerfect/buckaroo/wiki/Understanding-the-Resolver)
-
-### 7. CPM
+### 6. CPM
 
 CPM (CMake Package Manager) is a lightweight package manager integrated withing your project's `CMakeLists.txt`, enabling simplified dependency management and seamless integration of external libraries into C++ projects.
 
@@ -117,7 +105,7 @@ CPM (CMake Package Manager) is a lightweight package manager integrated withing 
 
 These tools are doing double duty.
 
-### 8. Meson
+### 7. Meson
 
 Meson is a fast and user-friendly build system designed for efficiently compiling and managing C, C++, and other programming language projects, offering simplicity, speed, and cross-platform support for streamlined development workflows.
 
@@ -129,7 +117,7 @@ Meson is a fast and user-friendly build system designed for efficiently compilin
   * Not primarily a package manager, but rather a build system
   * Requires more configuration than some other options
 
-### 9. Bazel
+### 8. Bazel
 
 Bazel can be a powerful and scalable build system developed by Google, supporting multiple programming languages including C++ and providing correctness, reproducibility, and speed for large-scale software projects.
 
@@ -140,6 +128,20 @@ Bazel can be a powerful and scalable build system developed by Google, supportin
 * **Weaknesses:**
   * [Steep learning curve](https://bazel.build/tutorials/cpp-use-cases#run-c-tests)
   * Can be overkill for small projects
+
+### 9. NixOS
+
+The Nix package manager is a powerful and purely functional package manager used in NixOS and other Linux distributions. It enables users to manage software packages and configurations in a reproducible and isolated manner, facilitating atomic upgrades and rollbacks.
+
+* **Strengths:**
+  * Purely functional package management with atomic upgrades.
+  * Reproducible builds across environments.
+  * Declarative system configuration and package management.
+  * Security focus with isolated package environments.
+* **Weaknesses:**
+  * Steep learning curve due to functional paradigm.
+  * Less platform with smaller community.
+  * Package selection might be less concentrated than dedicated managers.
 
 ### 10. Build2
 
@@ -245,21 +247,7 @@ Conda is a versatile package manager and environment management system primarily
   * Not primarily designed for C++ development, requiring additional setup for C++ packages.
   * C++ package selection might be smaller than dedicated C++ package managers.
 
-### 18. NixOS
-
-The Nix package manager is a powerful and purely functional package manager used in NixOS and other Linux distributions. It enables users to manage software packages and configurations in a reproducible and isolated manner, facilitating atomic upgrades and rollbacks.
-
-* **Strengths:**
-  * Purely functional package management with atomic upgrades.
-  * Reproducible builds across environments.
-  * Declarative system configuration and package management.
-  * Security focus with isolated package environments.
-* **Weaknesses:**
-  * Steep learning curve due to functional paradigm.
-  * Less mainstream with smaller community and ecosystem.
-  * C++ package selection might be smaller than dedicated managers.
-
-### 19. CMake's FetchContent
+### 18. CMake's FetchContent
 
 * **Strengths:**
   * Seamless integration avoids external tools and complexity.
@@ -273,6 +261,18 @@ The Nix package manager is a powerful and purely functional package manager used
 ## Tools that Laid the Foundation
 
 This is a bonus shout out. You should not be considering these but they deserve credit.
+
+### 19. Buckaroo
+
+Buckaroo is a package manager designed for C++ developers using the Buck build system, streamlining dependency management and integration into projects for efficient development workflows.
+
+* **Strengths:**
+  * Designed for large-scale projects with many dependencies
+  * Can manage complex build systems
+  * Integrates well with other Buckaroo tools
+* **Weaknesses:**
+  * No longer actively maintained
+  * Can be challenging to [pick the version](https://github.com/LoopPerfect/buckaroo/wiki/Understanding-the-Resolver)
 
 ### 20. Biicode
 
@@ -300,7 +300,10 @@ Ultimately, the best way to choose a C++ package manager is to try out a few dif
 
 :::note[Changelog]
 
-2024-02-13: Added Mamba suggested by u/mjklaim
-2024-02-20: Added SoupBuild suggested by u/mwasplund
+* 2024-02-13: Added Mamba suggested by u/mjklaim
+* 2024-02-20: Added SoupBuild suggested by u/mwasplund
+* 2024-04-07:
+  * Moved NixOS up the list because package selection vs the platform limitations and it's ability to make dedicated environments.
+  * Moved Buckaroo to honorable mentions because it's not been updated in three years.
 
 :::
