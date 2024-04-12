@@ -294,7 +294,31 @@ Buckaroo is a package manager designed for C++ developers using the Buck build s
 * **Weaknesses:**
   * No longer Maintained
 
-### 22. C++ Archive Network
+### 22. CGet
+
+[CGet](https://cget.readthedocs.io/en/latest/) is a package manager designed to work with CMake and non-CMake packages. It provides a flexible way to install packages from a directory, file URL, or Github repository.
+
+* **Strengths:**
+  * CGet can manage both CMake and non-CMake packages, making it a versatile tool for various project needs.
+  * It can install packages from various sources, including directories, file URLs, and Git repositories. Even has the concept of [recipes](https://github.com/pfultz2/cget-recipes). Supports using a `requirements.txt`.
+  * integrates seamlessly with CMake, allowing for easy package management within your project's build system.
+* **Weaknesses:**
+  * No longer Maintained.
+  * While it can handle non-CMake packages, CGet's core functionality revolves around CMake, potentially making it less suitable for projects without a CMake dependency.
+
+### 23. Teaport
+
+[Teaport](https://bitbucket.org/benman/teaport/src/master/) is a dependency manager designed specifically for C++ projects, inspired by the simplicity and flexibility of CocoaPods. It prioritizes leveraging existing tools and focuses on providing a separation between dependency management and build systems.
+
+* **Strengths:**
+  * Flexibility in dependency sources, supporting Git repositories, directories, and ZIP archives. This caters to diverse project structures and simplifies dependency acquisition.
+  * Utilizes a version lock file (`project.teaspec.lock`) to guarantee reproducible builds by locking down exact dependency versions.
+  * Supports multiple dependency variants, enabling selection based on specific requirements (e.g., different architectures or library versions).
+* **Weaknesses:**
+  * No longer Maintained.
+  * Relies on basic file copy for distributing sources like `scp`, `ssh`, and `rsync` for downloading dependencies. Difficult to scale compared to HTTP with a load balancer or CDN.
+
+### 24. C++ Archive Network
 
 * **Strengths:**
   * Supports the [Waf](https://waf.io/) build system
@@ -319,5 +343,6 @@ Ultimately, the best way to choose a C++ package manager is to try out a few dif
   * Moved NixOS up the list because package selection vs the platform limitations and it's ability to make dedicated environments.
   * Moved Buckaroo to honorable mentions because it's not been updated in three years.
   * Added BitBake
+* 2024-04-11: Added CGet and Teaport from [cppreference](https://en.cppreference.com/w/cpp/links/libs#Package_managers)
 
 :::
