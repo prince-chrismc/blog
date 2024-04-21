@@ -4,7 +4,7 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -40,7 +40,10 @@ const config = {
       },
     ],
   ],
-
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -108,6 +111,26 @@ const config = {
         defaultMode: 'dark',
         disableSwitch: false,
         respectPrefersColorScheme: false,
+      },
+      mermaid: {
+        theme: { light: 'forest', dark: 'dark' },
+        options: {
+          themeVariables: {
+            xyChart: {
+              backgroundColor: 'var(--ifm-background-color)',
+              titleColor: 'var(--accent)',
+              xAxisLabelColor: 'var(--ifm-font-color-base)',
+              xAxisTitleColor: 'var(--ifm-font-color-base)',
+              xAxisTickColor: 'var(--ifm-table-border-color)',
+              xAxisLineColor: 'var(--ifm-table-border-color)',
+              yAxisLabelColor: 'var(--ifm-font-color-base)',
+              yAxisTitleColor: 'var(--ifm-font-color-base)',
+              yAxisTickColor: 'var(--ifm-table-border-color)',
+              yAxisLineColor: 'var(--ifm-table-border-color)',
+              plotColorPalette: 'var(--color-secondary-500),var(--color-secondary-300),var(--color-secondary-900),var(--color-secondary-700),',
+            },
+          },
+        },
       },
     }),
 };
