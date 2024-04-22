@@ -5,7 +5,6 @@ title: Breaking down the 2024 Survey Results
 description: "The C++ ecosystem and developer landscape is a mix of progress and persistent challenges. While build scripts are becoming easier to manage, setting up complex development environments remains a hurdle. Python reigns supreme as the companion language for scripting and data tasks. Build times are showing signs of improvement, but setting up CI pipelines continues to be a pain point for many developers. Adoption of modern C++ features like Modules is slow, and nearly half of projects lack the memory safeguards provided by sanitizers and fuzzing. This blog goes through the result highlighting the key results and exploring the possible explanations for why these trend might be occurring."
 authors: [chris]
 tags: [c++, c++ developer survey, build systems, development environment, package management, ci/cd, modules, memory safety]
-unlisted: true
 ---
 
 It's that time of year once again! The ISO Committee published the summary of the results for the [_C++ Developer Survey "Lite"_](https://isocpp.org/blog/2024/04/2024-annual-cpp-developer-survey-lite). This has been [running for several years](https://isocpp.org/blog/2021/04/2021-annual-cpp-developer-survey-lite) and it's probably the first time we can start to see some trends... hopefully!
