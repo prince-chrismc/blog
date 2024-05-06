@@ -9,7 +9,7 @@ authors: [chris]
 tags: [c++, cmake, configuration files, bdd, testing, github actions, open source]
 ---
 
-As a C++ developer, ensuring your library integrates flawlessly with other projects is crucial for driving adoption. [CMake being the defacto standard](./2024-survey-results) plays a vital role in this process by providing installed configuration files; guiding consumers on how to find and utilize your library using [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html). But how do you guarantee these config files are installed correctly and provide all the necessary information? Enter automated testing!
+As a C++ developer, ensuring your library integrates flawlessly with other projects is crucial for driving adoption. [CMake being the defacto standard](/2024-survey-results) plays a vital role in this process by providing installed configuration files; guiding consumers on how to find and utilize your library using [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html). But how do you guarantee these config files are installed correctly and provide all the necessary information? Enter automated testing!
 
 This blog post explores an approach for testing CMake config files inspired by [Behavioral Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) practices and showcases a powerful implementation on [GitHub Actions](https://github.com/features/actions) featuring 14+ test cases.
 
