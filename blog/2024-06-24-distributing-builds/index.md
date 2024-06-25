@@ -11,6 +11,8 @@ Have you ever stared longingly at that *time-consuming* progress bar, willing yo
 
 Thankfully, there's an old solution: [distributing the build](https://cppdepend.com/blog/importance-of-cpp-distributed-build-systems/) burden across multiple machines. This approach can [dramatically slash those wait times](https://devblogs.microsoft.com/engineering-at-microsoft/large-scale-distributed-builds-with-microsoft-build-accelerator/) ([either way you go](https://www.distcc.org/)) and free you to focus on what matters - writing great code. This blog post will explore two prominent distribution techniques and how they've evolved: distributing compilation units and distributing targets. But here's the secret sauce: a [target-based approach](https://enccs.github.io/cmake-workshop/targets/), the current best practice, can not only accelerate builds but also lead you to design cleaner and more maintainable build pipelines. Let's dive in!
 
+<!--truncate-->
+
 ## Distributing Makefile Builds: The Predecessor
 
 This strategy leverages [C++'s compilation process](https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work), this strategy focuses on splitting the build into individual source files (compilation units) and compiling them into object files in parallel. Each machine receives a unit, compiles it independently, and returns the object file. This method is sometimes refered to as a task-based, where the order of the tasks needs to be preserved.

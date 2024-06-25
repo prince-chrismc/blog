@@ -9,7 +9,9 @@ tags: [c++, devops, packages, build systems, package managers, development, reus
 
 In the ever-evolving world of C++, managing code effectively is paramount. Packages, a fundamental concept in [software distribution](https://en.wikipedia.org/wiki/Category:Software_distribution_platforms), provide a structured approach to organizing and distributing reusable components. This blog post delves into the core elements of C++ packages, their essential properties, and how they streamline the development process and proposes a set of core concepts that should be captured by any specification.
 
-The reason this is so important from a CI design point of view is creating an [effective caching solution](https://www.incredibuild.com/blog/build-cache-today-and-tomorrow) to help [improve build times](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/caching?view=azure-devops). Avoid uploading unnecessary files is an [imperative requirement](https://cloud.google.com/build/docs/optimize-builds/speeding-up-builds#gcloudignore) for this strategy.ll
+The reason this is so important from a CI design point of view is creating an [effective caching solution](https://www.incredibuild.com/blog/build-cache-today-and-tomorrow) to help [improve build times](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/caching?view=azure-devops). Avoid uploading unnecessary files is an [imperative requirement](https://cloud.google.com/build/docs/optimize-builds/speeding-up-builds#gcloudignore) for this strategy.
+
+<!--truncate-->
 
 ## Unpacking the Essentials: What Makes a C++ Package
 

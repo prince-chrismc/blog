@@ -11,6 +11,8 @@ C++ grants developers immense power, but with it comes the [greater responsibili
 
 Despite these obvious upsides [50% of developers don't leverage these tools](/2024-survey-results), integrating them into the build process often raises concerns about increased build times. This blog post explores a strategy to leverage modern build tools and parallelization to achieve exceptional memory safety without sacrificing CI speed.
 
+<!--truncate-->
+
 ## The Power of Many: Building More Configurations
 
 Traditionally, projects might ship with a single build configuration optimized for production - they are built exclusive for the platforms they support. But what if we [built more configurations](/build-more-configurations) specifically designed for memory safety checks? We can introduce configurations that enable sanitizers like ASan and LSan during the build process. These configurations would catch memory issues early on, preventing them from reaching production.
