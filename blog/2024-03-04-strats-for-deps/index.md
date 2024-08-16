@@ -6,6 +6,8 @@ Streamline your C++ development workflow and ensure long-term project sustainabi
 
 By following these **industry-proven best practices**, you can establish a robust and sustainable approach to dependency management in your C++ projects:
 
+<!--truncate-->
+
 * **Embrace Version Control and Lockfiles:** Ensure reproducible builds and prevent unexpected behavior by explicitly specifying exact versions of dependencies in your project configuration files and utilizing tools that generate lockfiles to record downloaded versions.
 * **Minimize and Evaluate Dependencies:** Carefully consider alternative approaches or existing libraries before introducing new dependencies to reduce complexity and potential issues. Regularly evaluate your existing dependencies and maintain an up-to-date list with documented justifications for each one.
 * **Strike a Balance with Updates:** Stay informed about updates to your dependencies and address critical security vulnerabilities promptly. However, prioritize stability and avoid frequent updates unless strictly necessary. Focus on updating the fewest number of dependencies possible, prioritizing direct dependencies during development and limiting updates for transitive dependencies to patches addressing vulnerabilities.
