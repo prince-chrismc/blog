@@ -81,10 +81,6 @@ const config = {
             title: 'Keep Talking',
             items: [
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/prince_chrismc',
-              },
-              {
                 label: 'LinkedIn',
                 href: 'https://www.linkedin.com/in/christophermcarthur1996/',
               },
